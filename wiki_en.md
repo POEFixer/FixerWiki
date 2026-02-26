@@ -773,3 +773,54 @@ Displays statistics and maintenance tools.
 - **Counters:** Shows the "Total" number of logs in memory and the "Shown" number based on current filters.
 - **Clear All:** Permanently deletes all log entries from memory.
 - **Clear Filtered:** Deletes only the logs that are currently visible (passing the active filters).
+
+---
+
+## 13. Follow Bot
+
+The **Follow Bot** tab allows your character to automatically follow another player or entity. This is particularly useful for playing with a support character (Aurabot) or dual-boxing.
+
+### Key Features
+
+#### 1. General Control
+
+- **Enable Follow Bot:** Master switch to start/stop the bot.
+- **Status Indicator:** Displays the current state of the bot (e.g., *Following*, *WaitingForTarget*, *Stuck*) with color coding for quick status checks.
+
+#### 2. Target Settings
+
+Configure who to follow and how close to stay.
+
+- **Target Name:** Manually enter the name of the player/character to follow.
+- **Pick Player:** A dropdown list showing nearby players. Select one to automatically fill the Target Name.
+- **Stop Distance:** The distance at which the bot will stop moving towards the target (to avoid standing exactly on top of them).
+
+#### 3. Movement Settings
+
+Fine-tune how the bot moves and interacts with the game.
+
+- **Move Key:** Assign the key used for movement (usually your "Force Move" key in-game). Click the button and press the desired key to bind it.
+- **Click Ahead Distance:** How far ahead of the current position the bot should try to click.
+- **Click Interval:** Time (in ms) between movement clicks.
+- **Update Interval:** How often the bot logic runs.
+- **Path Recalc Interval:** How often the pathfinding algorithm recalculates the route to the target.
+- **Return Cursor:** If enabled, returns the mouse cursor to its original position after a movement click.
+- **Require Focus:** If enabled, the bot only moves when the game window is in the foreground.
+- **Disable in Town:** Automatically pauses the bot when in town or hideout.
+
+#### 4. Anti-Stuck Settings
+
+Mechanisms to handle situations where the bot gets stuck.
+
+- **Stuck Timeout:** How long (in ms) to wait without successful movement before declaring "Stuck".
+- **Max Recovery:** Number of attempts to un-stuck before giving up or resetting.
+
+#### 5. Debug Settings
+
+Visual tools to diagnose pathfinding and logic.
+
+- **Debug Overlay:** Enables drawing debug information on the screen.
+- **Show Path:** Draws the calculated path to the target.
+- **Show Waypoints:** Highlights the specific points the bot is clicking.
+- **Show Stop Radius:** Visualizes the circle around the target where the bot will stop.
+- **Metadata Debug:** Tools to view entity metadata and test pathfinding to specific objects (similar to Custom Hotkeys).

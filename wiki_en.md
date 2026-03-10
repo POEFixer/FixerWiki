@@ -931,7 +931,7 @@ A reference implementation demonstrating all Plugin SDK features:
 
 ### Creating Plugins
 
-See the [Plugin Development Guide](../PluginDevelopmentGuide.md) for detailed instructions on creating your own plugins, including:
+See the [Plugin Development Guide](PluginDevelopmentGuide.md) for detailed instructions on creating your own plugins, including:
 - Project setup and build configuration
 - IPlugin interface implementation
 - PluginContext API reference (v1-v4)

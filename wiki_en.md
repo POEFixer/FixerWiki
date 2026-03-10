@@ -164,10 +164,19 @@ Customize the pop-up notifications that appear when a trade search finds an item
   -   **Show Mods:** Lists the item's explicit modifiers.
 - **Test Notification:** Sends a sample notification to test your current settings.
 
+### Theme & Appearance
+
+- **Theme:** Choose from 4 visual themes for the entire application:
+  - **Dark** — Default dark theme with subtle contrast.
+  - **Light** — Light theme for well-lit environments.
+  - **Blue** — Dark theme with blue accent colors.
+  - **Midnight** — Deep dark theme with minimal brightness.
+- **Font Scale:** Adjust the global text size (0.8x to 1.5x) for better readability on high-resolution displays.
+
 ### Language & Interface
 
-- **Language:** Switch the application's interface language (e.g., English, Russian, Korean, etc.).
-- **Font Size:** Adjust the text size for better readability on high-resolution displays.
+- **Language:** Switch the application's interface language (e.g., English, Russian, Korean, etc.). 11 languages are supported.
+- All theme-related strings are localized across all supported languages.
 
 *(Screenshot: Settings Tab Overview)*
 
@@ -436,14 +445,15 @@ The crafting process is managed entirely through the in-game overlay window.
 
 > **Warning:** The bot simulates mouse clicks. Do not move your mouse or use the keyboard while the crafting process is running (except to press the emergency Stop hotkey if configured, or clicking Stop in the UI).
 
-### Inventory Viewer
+### Settings
 
-The **"Show Inventory Viewer"** checkbox in the main tab opens a debug tool.
+The AutoCraft module exposes configurable settings directly in the UI:
 
-- **Purpose:** Allows you to inspect the game's internal inventory state as seen by the bot.
-- **Features:** View different inventory tabs (Main, Equipment, Stash), see item grid positions, and inspect raw item data (addresses, internal names, and mod values). This is useful for troubleshooting if the bot isn't recognizing an item correctly.
+- **Timing:** Adjustable delays for click interval, scan timeout, and action cooldowns.
+- **Safety:** Currency limit per session, emergency stop hotkey support.
+- **Behavior:** Configurable shift-hold for bulk crafting, cursor return options.
 
-*(Screenshot: Inventory Viewer Grid)*
+> **Emergency Stop:** You can configure a global hotkey to immediately stop the crafting process at any time.
 
 ---
 
@@ -824,3 +834,108 @@ Visual tools to diagnose pathfinding and logic.
 - **Show Waypoints:** Highlights the specific points the bot is clicking.
 - **Show Stop Radius:** Visualizes the circle around the target where the bot will stop.
 - **Metadata Debug:** Tools to view entity metadata and test pathfinding to specific objects (similar to Custom Hotkeys).
+
+---
+
+## 14. Debug [PoE 2]
+
+The **Debug** tab provides low-level inspection tools for examining game memory structures in real-time. It is primarily designed for plugin developers and advanced users who need to understand entity data, component values, and UI element hierarchy.
+
+### 1. Entity List
+
+A filterable table showing all entities currently loaded in the game.
+
+- **Columns:** Entity ID, Address, Metadata Path, Type, SubType, State, Rarity, Zone (InnerCircle/OuterCircle/Far).
+- **Type Filters:** Quickly filter by entity type — Monsters, Chests, NPCs, Players, Items, etc.
+- **Search:** Text-based search by metadata path.
+- **Count Display:** Shows total number of entities and filtered count.
+
+### 2. Entity Watch (Component Inspector)
+
+Click on an entity in the list to "watch" it. The application's worker thread will then read detailed component data for that entity every frame.
+
+**Available Components:**
+- **Life:** Current/Max HP, ES, MP, Reserved amounts, recovery rates.
+- **Render:** World position (X/Y/Z), model bounds, model name/path.
+- **Positioned:** Grid position, rotation, scale factor.
+- **Targetable:** IsTargetable, IsHostile, IsFriendly flags.
+- **Animated:** Current animation path, animation ID.
+- **Stats:** Full stat dictionary (stat ID → value).
+- **Actor:** Active skills list, current action ID.
+- **Buffs:** All active buffs with name, charges, time remaining, total duration.
+
+- **All Components:** Displays a full list of all component name→address pairs, even for components without dedicated parsing (useful for advanced memory reading).
+
+### 3. Inventory Debug
+
+Inspect the game's inventory system in detail.
+
+- **ServerData:** Displays the ServerData component address.
+- **Inventory List:** Shows all player inventories (ID, Address, Name).
+- **Inventory Watch:** Select an inventory to inspect:
+  - **Slot Grid:** Visual representation of occupied/empty slots.
+  - **Item List:** All items with their metadata path, rarity, slot position.
+  - **Item Mods:** Full mod breakdown (Implicit, Explicit, Enchant, Hellscape) with values.
+
+### 4. UI Explorer
+
+Navigate the game's UI element tree hierarchy.
+
+- **Game UI Root:** Inspect elements under the in-game UI root (panels, menus, buttons).
+- **Top-Level UI Root:** Access the top-level UI root for login/loading screens.
+- **Tree Navigation:** Expand/collapse UI elements to see children, addresses, and properties.
+- **Search:** Filter elements by name/path.
+- **GameCullValue:** Displayed for UI scale calculations.
+
+---
+
+## 15. Plugins
+
+The **Plugins** tab manages native C++ DLL plugins that extend POEFixer's functionality. Plugins can render overlays, access game data, and integrate seamlessly with the existing UI.
+
+### Plugin Management
+
+- **Plugin List:** Shows all discovered plugins from the `Plugins/` directory.
+- **Enable/Disable:** Toggle individual plugins on or off. State is saved between sessions.
+- **Per-Plugin Settings:** Each enabled plugin can render its own settings section directly in the Plugins tab.
+- **SDK Version Check:** The host validates plugin SDK version compatibility on load. Current SDK version: **4**.
+
+### Available Plugins
+
+#### Kill Counter
+
+A comprehensive kill/chest/death tracking overlay.
+
+- **Monster Kill Tracking:** Counts killed monsters by rarity (Normal, Magic, Rare, Unique, Unknown) using disappearance-based detection.
+- **Chest Tracking:** Counts opened chests by type (Magic, Rare, Expedition, Breach, Strongbox).
+- **Death Counter:** Tracks player deaths.
+- **Per-Map Counters:** Automatic reset when entering a new area and killing the first monster (old counters remain visible until first kill in new area).
+- **Lifetime Totals:** Persistent statistics stored in a SQLite3 database.
+- **Overlay:**
+  - Draggable when the program menu is active ("Drag to reposition" hint appears).
+  - Non-interactive and title-bar-free when menu is hidden.
+  - Configurable opacity (0-100%), adjustable size.
+  - Tab bar for switching between Map and Total views.
+- **Icon Atlas:** Displays entity type icons from the shared `Resources/radar/icons.png` sprite sheet.
+- **Settings:** Configure which counters to display, opacity, overlay mode, reset buttons.
+
+#### Example Plugin
+
+A reference implementation demonstrating all Plugin SDK features:
+
+- **Buff Inspector:** Lists player buffs with filtering and progress bars.
+- **Entity Explorer:** Entity debug list with watch mechanism, component trees.
+- **Inventory Inspector:** ServerData viewer, inventory selector, slot grid, item mods.
+- **Memory Viewer:** Hex dump viewer, `Read<T>` demo, pattern scanner.
+- **UI Explorer:** Full UI element tree navigator with search and highlighting.
+
+### Creating Plugins
+
+See the [Plugin Development Guide](../PluginDevelopmentGuide.md) for detailed instructions on creating your own plugins, including:
+- Project setup and build configuration
+- IPlugin interface implementation
+- PluginContext API reference (v1-v4)
+- Data structures and enums
+- Common recipes and patterns
+- Draggable overlay pattern
+- Troubleshooting guide

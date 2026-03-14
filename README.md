@@ -8,33 +8,32 @@ Official documentation repository for **POEFixer** — a comprehensive overlay a
 
 All documentation is available on the **[Wiki](https://github.com/POEFixer/FixerWiki/wiki)**:
 
-| Page | Language | Description |
-|:-----|:---------|:------------|
-| [**Home**](https://github.com/POEFixer/FixerWiki/wiki) | — | Main page with feature overview and quick navigation |
-| [**English Wiki**](https://github.com/POEFixer/FixerWiki/wiki/wiki_en) | English | Full application documentation — all features, tabs, and settings |
-| [**Russian Wiki**](https://github.com/POEFixer/FixerWiki/wiki/wiki_ru) | Русский | Полная документация приложения на русском языке |
-| [**Plugin Development Guide**](https://github.com/POEFixer/FixerWiki/wiki/Plugin-Development-Guide) | English | Complete guide for creating native C++ DLL plugins |
+### User Guides
+
+| Language | Wiki | Plugin Development Guide |
+|:---------|:-----|:-------------------------|
+| **English** | [Wiki](https://github.com/POEFixer/FixerWiki/wiki/wiki_en) | [Plugin Guide](https://github.com/POEFixer/FixerWiki/wiki/Plugin-Development-Guide) |
+| **Русский** | [Wiki](https://github.com/POEFixer/FixerWiki/wiki/wiki_ru) | [Plugin Guide](https://github.com/POEFixer/FixerWiki/wiki/Plugin-Development-Guide-RU) |
+| **Deutsch** | [Wiki](https://github.com/POEFixer/FixerWiki/wiki/wiki_de) | [Plugin Guide](https://github.com/POEFixer/FixerWiki/wiki/Plugin-Development-Guide-DE) |
+| **Francais** | [Wiki](https://github.com/POEFixer/FixerWiki/wiki/wiki_fr) | [Plugin Guide](https://github.com/POEFixer/FixerWiki/wiki/Plugin-Development-Guide-FR) |
+| **Espanol** | [Wiki](https://github.com/POEFixer/FixerWiki/wiki/wiki_es) | [Plugin Guide](https://github.com/POEFixer/FixerWiki/wiki/Plugin-Development-Guide-ES) |
+| **Portugues (BR)** | [Wiki](https://github.com/POEFixer/FixerWiki/wiki/wiki_pt) | [Plugin Guide](https://github.com/POEFixer/FixerWiki/wiki/Plugin-Development-Guide-PT) |
+| **Thai** | [Wiki](https://github.com/POEFixer/FixerWiki/wiki/wiki_th) | [Plugin Guide](https://github.com/POEFixer/FixerWiki/wiki/Plugin-Development-Guide-TH) |
+| **Ukrainian** | [Wiki](https://github.com/POEFixer/FixerWiki/wiki/wiki_ua) | [Plugin Guide](https://github.com/POEFixer/FixerWiki/wiki/Plugin-Development-Guide-UA) |
+| **Japanese** | [Wiki](https://github.com/POEFixer/FixerWiki/wiki/wiki_ja) | [Plugin Guide](https://github.com/POEFixer/FixerWiki/wiki/Plugin-Development-Guide-JA) |
+| **Korean** | [Wiki](https://github.com/POEFixer/FixerWiki/wiki/wiki_ko) | [Plugin Guide](https://github.com/POEFixer/FixerWiki/wiki/Plugin-Development-Guide-KO) |
+| **Chinese** | [Wiki](https://github.com/POEFixer/FixerWiki/wiki/wiki_zh) | [Plugin Guide](https://github.com/POEFixer/FixerWiki/wiki/Plugin-Development-Guide-ZH) |
 
 ---
 
-## Covered Topics
+## Community
 
-- **Trade Automation** — WebSocket live search, manual bulk buy, auto-stash
-- **Radar Overlay** — Entity tracking, pathfinding, icon customization
-- **AutoPot** — Automated flask usage, vitals overlay, auto-disconnect
-- **HealthBars** — Customizable HP/ES bars with per-rarity configuration
-- **Follow Bot** — A* pathfinding, player following, item pickup
-- **Map Clear Bot** — Coverage planning, combat, chest interaction
-- **AutoCraft** — Automated crafting with mod matching
-- **Smoother** — Game file patching for performance
-- **Atlas Overlay** — Atlas tree visualization and navigation
-- **Custom Hotkeys** — Advanced macro system with conditions and auto-aim
-- **Plugin SDK (v4)** — Native C++ DLL plugin development with 39+ API functions
-- **Launcher** — Sandboxed game launching via limited Windows users
-- **Debug Tools** — Entity inspector, component explorer, UI tree navigator
+Join our Discord server for support, updates, and discussions:
+
+**[Discord](https://discord.gg/ysg64jfG62)**
 
 ---
 
 ## Contributing
 
-Documentation improvements are welcome. The source markdown files are maintained in the [Wiki](https://github.com/POEFixer/FixerWiki/wiki) directly.
+Documentation source files are maintained in `docs/` and synced to the Wiki via `tools/sync_wiki.sh`.

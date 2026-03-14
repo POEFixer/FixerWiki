@@ -32,8 +32,3 @@ Join our Discord server for support, updates, and discussions:
 
 **[Discord](https://discord.gg/ysg64jfG62)**
 
----
-
-## Contributing
-
-Documentation source files are maintained in `docs/` and synced to the Wiki via `tools/sync_wiki.sh`.
